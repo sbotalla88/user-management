@@ -1,20 +1,19 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const user_service_1 = require("../../../server/service/user.service");
+import {User} from '../../../service/user.service'
+
 /* -------------------------------------------------------------------------- */
 /*                             User service test                              */
 /* -------------------------------------------------------------------------- */
-describe('UserService', () => {
-    describe('Get users', () => {
-        const UserService = new user_service_1.User();
-        it('Should return all users if exists', () => {
+describe('UserService', ()=>{
+    describe('Get users', ()=>{
+        const UserService = new User();
+        it('Should return all users if exists', ()=>{
             const result = UserService.getUsers();
             expect(result.length).toBe(2);
         });
     });
-    describe('Get user by id', () => {
-        const UserService = new user_service_1.User();
-        it('Should return user by id if exists', () => {
+    describe('Get user by id', ()=>{
+        const UserService = new User();
+        it('Should return user by id if exists', ()=>{
             const result = UserService.getUserById(0);
             expect(result).toEqual({
                 "id": 0,
@@ -25,9 +24,10 @@ describe('UserService', () => {
                 "birthday": "15/12/1988"
             });
         });
-        it('Should return undefined if no exists', () => {
+        it('Should return undefined if no exists', ()=>{
             const result = UserService.getUserById(2);
             expect(result).toBe(undefined);
         });
     });
-});
+
+})

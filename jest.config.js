@@ -7,8 +7,5 @@ module.exports = {
     testEnvironment: 'node',
     setupFiles: ['dotenv/config'],
     moduleFileExtensions: ['ts', 'js', 'json'],
-    modulePathIgnorePatterns: ['<rootDir>/src/', '<rootDir>/dist/'],
-    moduleNameMapper: {
-        '^root(.*)$': '<rootDir>/server$1',
-    }
+    modulePathIgnorePatterns: ['<rootDir>/src/', '<rootDir>/dist/', '<rootDir>/public']
 };

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import server from '../../../server/server';
+import server from '../../../server';
 
 /* -------------------------------------------------------------------------- */
 /*                             User service test                              */
