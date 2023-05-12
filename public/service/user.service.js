@@ -7,7 +7,7 @@ exports.User = void 0;
 const user_json_1 = __importDefault(require("../data/user.json"));
 class User {
     constructor() {
-        //Get all users 
+        //Get all users
         this.getUsers = () => {
             return user_json_1.default !== null && user_json_1.default !== void 0 ? user_json_1.default : [];
         };

@@ -39,7 +39,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
-const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+const CSS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css';
 const routes_1 = require("./routes");
 // Create Express server
 const server = (0, express_1.default)();
@@ -47,10 +47,7 @@ const server = (0, express_1.default)();
 server.use((0, cors_1.default)());
 server.use(express_1.default.json({ limit: '100mb' }));
 server.use(express_1.default.urlencoded({ extended: false, limit: '100mb' }));
-server.set('port', process.env.PORT || 3000);
-server.get('/', (req, res) => {
-    return res.send("API documentation: {server-url}/api/guide");
-});
+server.set('port', process.env['PORT'] || 3000);
 /* Swagger files start */
 server.use('/api/guide', swagger_ui_express_1.default.serve, (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.send(swagger_ui_express_1.default.generateHTML(yield Promise.resolve().then(() => __importStar(require('./swagger.json'))), { customCssUrl: CSS_URL }));
@@ -58,7 +55,11 @@ server.use('/api/guide', swagger_ui_express_1.default.serve, (_req, res) => __aw
 /* Swagger files end */
 // Register Public Path
 server.use('/api/public/static', express_1.default.static(path_1.default.join(__dirname, '../public/static')));
+server.use(express_1.default.static(path_1.default.join(__dirname, '../dist')));
 // Register router
 (0, routes_1.RegisterRoutes)(server);
+server.get('*', (req, res) => {
+    return res.sendFile(`${path_1.default.join(__dirname, '../dist/')}/index.html`);
+});
 // server.use(notFoundHandler);
 exports.default = server;

@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const server_1 = __importDefault(require("./server"));
-const dev = process.env.NODE_ENV === 'development';
+const dev = process.env['NODE_ENV'] === 'development';
 (() => __awaiter(void 0, void 0, void 0, function* () {
     /**
      * Start Express server.

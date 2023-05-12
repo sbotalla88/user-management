@@ -27,7 +27,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const tsoa_1 = require("tsoa");
 const http_status_codes_1 = __importDefault(require("http-status-codes"));
-const user_1 = require("../service/user");
+const user_service_1 = require("../service/user.service");
 let UsersController = class UsersController extends tsoa_1.Controller {
     constructor() {
         super();
@@ -37,10 +37,10 @@ let UsersController = class UsersController extends tsoa_1.Controller {
          * @param param0
          * @returns
          */
-        this.renderResponse = ({ status = http_status_codes_1.default.OK, message, data, error } = {}) => {
+        this.renderResponse = ({ status = http_status_codes_1.default.OK, message, data, error, } = {}) => {
             return Object.assign(Object.assign(Object.assign({ status }, (message ? { message } : {})), (data ? { data } : {})), (error ? { error } : {}));
         };
-        this.UserService = new user_1.User();
+        this.UserService = new user_service_1.User();
     }
     /**
      * Get all users
@@ -58,7 +58,12 @@ let UsersController = class UsersController extends tsoa_1.Controller {
     getForm(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield this.UserService.getUserById(id);
-            return this.renderResponse({ data: result });
+            if (result) {
+                return this.renderResponse({ data: result });
+            }
+            else {
+                return this.renderResponse({ status: 404, error: 'No user found' });
+            }
         });
     }
 };
