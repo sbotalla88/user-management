@@ -13,7 +13,7 @@ extensions:
     createdDate: 05/2023
 ---
 
-# CivicPlus Custom API
+# User Management Custom API
 
 ## Prerequisites
 

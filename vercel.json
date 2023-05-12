@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "oneblink-sdk-test",
+    "name": "user-management-test",
     "builds": [
        { "src": "public/index.js", "use": "@vercel/node" }
     ],
