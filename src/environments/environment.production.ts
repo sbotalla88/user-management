@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   environment: 'PROD',
-  apiUrl: 'http://localhost:3002',
+  apiUrl: 'user-management-rust.vercel.app',
 };
